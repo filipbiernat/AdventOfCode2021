@@ -5,7 +5,7 @@
         public static void Main()
         {
             Console.WriteLine("Advent Of Code 2021");
-            Execute(new Day0.Day0(), new Day0.Day0());
+            Execute(new Day1.Day1A(), new Day1.Day1B());
         }
 
         private static void Execute(params IDay[] days)
