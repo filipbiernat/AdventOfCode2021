@@ -17,7 +17,7 @@ namespace AdventOfCode2021.Day18
 
             // Add the first snailfish number and the second, then add that result and the third, then add that result and the
             // fourth, and so on until all numbers in the list have been used once.
-            // To check whether it's the right answer, the snailfish teacher only checks the magnitude of the final sum. 
+            // To check whether it's the right answer, the snailfish teacher only checks the magnitude of the final sum.
             int output = input
                 .Select(line => new SnailfishNumber(line))
                 .Aggregate((lhs, rhs) => lhs + rhs)
