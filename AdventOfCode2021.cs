@@ -27,7 +27,8 @@
             //Execute(new Day20.Day20A(), new Day20.Day20B());
             //Execute(new Day21.Day21A(), new Day21.Day21B());
             //Execute(new Day22.Day22A(), new Day22.Day22B());
-            Execute(new Day23.Day23A(), new Day23.Day23B());
+            //Execute(new Day23.Day23A(), new Day23.Day23B());
+            Execute(new Day24.Day24A(), new Day24.Day24B());
         }
 
         private static void Execute(params IDay[] days)
