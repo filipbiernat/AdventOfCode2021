@@ -42,8 +42,28 @@
 
         private static void Execute(IDay day)
         {
-            Console.WriteLine("\r\nRunning {0}:\r\n", day.GetType().Name);
+            Console.WriteLine();
+            Console.WriteLine("Running {0}:", day.GetType().Name);
+
+            System.Diagnostics.Stopwatch stopWatch = new();
+            stopWatch.Start();
             day.Run();
+            stopWatch.Stop();
+
+            List<string> runTime = new();
+            AppendTime(runTime, stopWatch.Elapsed.Hours, "h");
+            AppendTime(runTime, stopWatch.Elapsed.Minutes, "min");
+            AppendTime(runTime, stopWatch.Elapsed.Seconds, "sec");
+            AppendTime(runTime, stopWatch.Elapsed.Milliseconds, "msec");
+            Console.WriteLine("Run time: {0}.", string.Join(", ", runTime));
+        }
+
+        private static void AppendTime(List<string> list, int time, string unit)
+        {
+            if (time > 0)
+            {
+                list.Add(string.Format($"{time} {unit}"));
+            }
         }
     }
 }

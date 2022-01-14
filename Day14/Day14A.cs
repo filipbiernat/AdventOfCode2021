@@ -59,7 +59,16 @@ namespace AdventOfCode2021.Day14
             Console.WriteLine("Solution: {0}.", output);
         }
 
-        private static void Increase<KeyT>(Dictionary<KeyT, long> dict, KeyT key, long value)
+        private static void Increase(Dictionary<Tuple<char, char>, long> dict, Tuple<char, char> key, long value)
+        {
+            if (!dict.ContainsKey(key))
+            {
+                dict[key] = 0;
+            }
+            dict[key] += value;
+        }
+
+        private static void Increase(Dictionary<char, long> dict, char key, long value)
         {
             if (!dict.ContainsKey(key))
             {

@@ -98,36 +98,30 @@ namespace AdventOfCode2021.Day15
 
             // What is the lowest total risk of any path from the top left to the bottom right?
             int output = BellmanFord(rows * columns, edges);
-            Console.WriteLine(output);
+            Console.WriteLine("Solution: {0}.", output);
         }
 
         private static int BellmanFord(int verticesCount, List<GraphEdge> edges)
         {
             int[] distance = Enumerable.Repeat(int.MaxValue, verticesCount).ToArray();
             distance[0] = 0;
-            for (int i = 1; i <= verticesCount - 1; ++i)
+
+            bool distanceImproved;
+            do
             {
-                for (int j = 0; j < edges.Count; ++j)
+                distanceImproved = false;
+                foreach (GraphEdge edge in edges)
                 {
-                    int u = edges[j].SourceId;
-                    int v = edges[j].DestinationId;
-                    int weight = edges[j].Weight;
-                    if (distance[u] != int.MaxValue && distance[u] + weight < distance[v])
+                    if (distance[edge.SourceId] != int.MaxValue &&
+                        distance[edge.SourceId] + edge.Weight < distance[edge.DestinationId])
                     {
-                        distance[v] = distance[u] + weight;
+                        distance[edge.DestinationId] = distance[edge.SourceId] + edge.Weight;
+                        distanceImproved = true;
                     }
                 }
             }
-            for (int i = 0; i < edges.Count; ++i)
-            {
-                int u = edges[i].SourceId;
-                int v = edges[i].DestinationId;
-                int weight = edges[i].Weight;
-                if (distance[u] != int.MaxValue && distance[u] + weight < distance[v])
-                {
-                    Console.WriteLine("Graph contains negative weight cycle.");
-                }
-            }
+            while (distanceImproved);
+
             return distance.Last();
         }
     }

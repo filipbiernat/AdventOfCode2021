@@ -92,8 +92,7 @@ namespace AdventOfCode2021.Day4
             int sumOfUnmarked = winningBoard.GetUnmarkedNumbers().Sum(s => s.number);
             // Then, multiply that sum by the number that was just called when the board won.
             int output = sumOfUnmarked * winningBoard.MarkedNumbers.Last().number;
-
-            Console.WriteLine(output);
+            Console.WriteLine("Solution: {0}.", output);
         }
     }
 }
